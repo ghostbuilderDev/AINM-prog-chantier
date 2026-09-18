@@ -13,3 +13,7 @@ Version PWA avec accès direct SharePoint SNCF aux programmations AHT et AJT.
 - Boutons de secours vers les dossiers AHT et AJT.
 
 L'application n'enregistre aucun identifiant Microsoft. L'ouverture SharePoint utilise la session SNCF de l'agent.
+
+
+## v1.4
+Correction des liens directs AHT/AJT : utilisation de la route Excel Online SharePoint `/:x:/r/sites/...` avec `csf=1&web=1`, conforme aux liens SNCF copiés depuis SharePoint. Les boutons dossier conservent la route standard `/sites/...`.
