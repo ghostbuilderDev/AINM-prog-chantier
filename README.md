@@ -1,20 +1,15 @@
-# Programmation AINM — PWA
+# AINM Prog Chantier — PWA v1.2
 
-Application statique PWA pour la programmation hebdomadaire AINM.
+Version PWA avec accès direct SharePoint SNCF aux programmations AHT et AJT.
 
-## Fichiers
-- `index.html` : application
-- `manifest.webmanifest` : manifeste PWA
-- `sw.js` : service worker / mode hors ligne
-- `icons/` : icônes Android / installation
+## AHT / AJT
+- AHT : ouverture du fichier hebdomadaire du chantier.
+- AJT : ouverture du fichier journalier (lundi à dimanche) selon la semaine sélectionnée.
+- Ligne 830 000 : secteur 6.
+- Ligne 750 000 : secteur 7.
+- Arborescence AHT : `1-AHT LeBonit / année / Sxx`.
+- Arborescence AJT : `3-AJT LeBonit / année / Sxx / n-Jour jj-mm-aa`.
+- Le libellé de fichier reste configurable dans chaque fiche chantier.
+- Boutons de secours vers les dossiers AHT et AJT.
 
-## Déploiement
-Le projet est compatible avec GitHub Pages. Le service worker nécessite HTTPS (fourni par GitHub Pages) ou localhost.
-
-## Version 1.1 — Accès AHT / AJT
-- Configuration par chantier du secteur AHT/AJT (1 à 7) et du libellé de fichier.
-- Bouton AHT / AJT dans la programmation.
-- Ouverture directe du fichier AHT hebdomadaire calculé à partir de l'année/semaine ISO.
-- Repli vers le dossier SharePoint de la semaine si le nom du fichier diffère.
-- Montereau préconfiguré : secteur 6 / Melun - Montereau pour les nouvelles installations.
-- AJT préparé côté interface ; l'ouverture directe sera activée lorsque la nomenclature exacte AJT sera connue.
+L'application n'enregistre aucun identifiant Microsoft. L'ouverture SharePoint utilise la session SNCF de l'agent.

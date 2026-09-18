@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'ainm-prog-chantier-v1.0.0';
+const CACHE_VERSION = 'ainm-prog-chantier-v1.2.0';
 const APP_SHELL = [
   './',
   './index.html',
