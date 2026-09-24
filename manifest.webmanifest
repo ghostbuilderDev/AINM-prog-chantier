@@ -2,16 +2,22 @@
   "id": "./",
   "name": "Programmation AINM",
   "short_name": "AINM Prog",
-  "description": "Programmation hebdomadaire AINM : fiches chantier, ZEP, S9/S11, LAM, TTX et export Excel.",
+  "description": "Programmation hebdomadaire AINM : réception des programmations UOTx, fiches chantier, S9/S11, LAM, TTX et export Excel.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "background_color": "#f3f6f8",
   "theme_color": "#10283f",
   "orientation": "any",
   "lang": "fr-FR",
-  "categories": ["business", "productivity"],
+  "categories": [
+    "business",
+    "productivity"
+  ],
   "icons": [
     {
       "src": "./icons/icon-192.png",
