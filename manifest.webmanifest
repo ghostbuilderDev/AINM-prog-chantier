@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Programmation AINM",
   "short_name": "AINM Prog",
-  "description": "Programmation hebdomadaire AINM : réception des programmations UOTx, fiches chantier, S9/S11, LAM, TTX et export Excel.",
+  "description": "AINM : consultation AHT/AJT, réception automatique des programmations UOTx, S9/S11, référentiel ZEP et préparation hebdomadaire.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
