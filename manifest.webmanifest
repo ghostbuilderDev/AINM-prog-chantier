@@ -3,7 +3,7 @@
   "name": "Programmation AINM",
   "short_name": "AINM Prog",
   "description": "AINM : consultation AHT/AJT, réception automatique des programmations UOTx, S9/S11, référentiel ZEP et préparation hebdomadaire.",
-  "start_url": "./",
+  "start_url": "./index.html?v=1.8.1",
   "scope": "./",
   "display": "standalone",
   "display_override": [

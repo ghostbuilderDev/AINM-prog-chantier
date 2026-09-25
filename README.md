@@ -1,4 +1,4 @@
-# Programmation AINM v1.8.0 — version épurée terrain + réception automatique
+# Programmation AINM v1.8.1 — version épurée terrain + réception automatique
 
 ## Objectif
 
@@ -25,7 +25,7 @@ Architecture retenue :
 
 ## Référentiel Contrat Travaux
 
-La v1.8.0 peut synchroniser le catalogue local de l'application **Contrat Travaux / Atelier Contrats** lorsqu'il est disponible dans le même navigateur et sous la même origine web.
+La v1.8.1 peut synchroniser le catalogue local de l'application **Contrat Travaux / Atelier Contrats** lorsqu'il est disponible dans le même navigateur et sous la même origine web.
 
 Formats reconnus :
 
@@ -56,4 +56,7 @@ Il est destiné au raccordement de l'application CR OFF. Un export JSON manuel e
 
 ## Version
 
-**1.8.0**
+**1.8.1**
+
+## Correctif 1.8.1 — anti-cache
+Si un téléphone affiche encore une ancienne interface après déploiement, ouvrir `reset-ainm.html`. Cette page supprime uniquement les caches `ainm-prog-chantier-*` et désinscrit le service worker dont la portée est `/AINM-prog-chantier/`. Elle ne supprime ni localStorage ni IndexedDB.

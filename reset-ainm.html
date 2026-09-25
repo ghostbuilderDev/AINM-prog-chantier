@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#10283f">
+<title>AINM — Réparation mise à jour</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f3f6f8;color:#17202a}.wrap{max-width:680px;margin:0 auto;padding:32px 18px}.card{background:white;border-radius:18px;padding:24px;box-shadow:0 8px 30px #0001}h1{font-size:1.5rem;margin-top:0}.ok{color:#137333}.warn{color:#9a6700}button{width:100%;border:0;border-radius:12px;padding:15px 18px;background:#10283f;color:white;font-size:1rem;font-weight:700;margin-top:12px}.small{font-size:.9rem;color:#5f6b76;line-height:1.5}#log{white-space:pre-wrap;background:#f7f8fa;border-radius:10px;padding:12px;margin-top:16px;font-size:.88rem}</style>
+</head>
+<body><div class="wrap"><div class="card">
+<h1>Réparer la mise à jour AINM</h1>
+<p>Cette opération supprime uniquement les anciens caches de <strong>Programmation AINM</strong> et désactive son ancien service worker.</p>
+<p class="small"><strong>Les données de programmation, fiches chantier et configurations enregistrées dans le navigateur ne sont pas supprimées.</strong> Les autres applications du même domaine ne sont pas touchées.</p>
+<button id="go">Mettre AINM à jour maintenant</button>
+<div id="log">Prêt.</div>
+</div></div>
+<script>
+const log=t=>document.getElementById('log').textContent=t;
+document.getElementById('go').addEventListener('click',async()=>{
+  const btn=document.getElementById('go'); btn.disabled=true;
+  try{
+    log('1/3 — Suppression des anciens caches AINM…');
+    if('caches' in window){
+      const keys=await caches.keys();
+      await Promise.all(keys.filter(k=>/^ainm-prog-chantier-/i.test(k)).map(k=>caches.delete(k)));
+    }
+    log('2/3 — Désactivation de l’ancien service worker…');
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.filter(r=>{try{return new URL(r.scope).pathname.startsWith('/AINM-prog-chantier/')}catch{return false}}).map(r=>r.unregister()));
+    }
+    log('3/3 — Chargement de la version 1.8.1…');
+    const target='./index.html?fresh='+Date.now();
+    try{await fetch(target,{cache:'reload'});}catch{}
+    setTimeout(()=>location.replace(target),600);
+  }catch(e){
+    btn.disabled=false;
+    log('Erreur : '+(e&&e.message?e.message:e));
+  }
+});
+</script></body></html>

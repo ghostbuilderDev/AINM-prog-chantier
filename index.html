@@ -322,7 +322,7 @@ const Excel=(()=>{
 
 'use strict';
 const App=(()=>{
-  const KEY='ainm.programmation.v1',APP_VERSION='1.8.0',e=C.escape;
+  const KEY='ainm.programmation.v1',APP_VERSION='1.8.1',e=C.escape;
   let state,view='consult',editor=null,importCandidate=null,mailBatch=null,exportCandidate=null,toastTimer,bridgeTimer=null,bridgeBusy=false,storageOK=true,foreignChange=false;
   const $=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));
   const project=id=>state.projects.find(p=>p.id===id);
@@ -720,7 +720,7 @@ const App=(()=>{
     window.addEventListener('storage',ev=>{if(ev.key===KEY&&ev.newValue){try{if(JSON.parse(ev.newValue).revision!==state.revision){foreignChange=true;warnStorage('Un autre onglet a modifié les données. Sauvegardez vos changements en JSON puis rechargez cette page pour éviter un écrasement.');}}catch{}}});
     scheduleBridgeSync();
     if(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){
-      if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+      if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=1.8.1',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
     }
   }
   return {init,getState:()=>state,setState:s=>{state=s;render();},render,editOperation,editProject,current,download,persist};
