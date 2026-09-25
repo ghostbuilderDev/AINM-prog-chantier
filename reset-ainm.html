@@ -30,7 +30,7 @@ document.getElementById('go').addEventListener('click',async()=>{
       const regs=await navigator.serviceWorker.getRegistrations();
       await Promise.all(regs.filter(r=>{try{return new URL(r.scope).pathname.startsWith('/AINM-prog-chantier/')}catch{return false}}).map(r=>r.unregister()));
     }
-    log('3/3 — Chargement de la version 1.8.1…');
+    log('3/3 — Chargement de la version 1.8.2…');
     const target='./index.html?fresh='+Date.now();
     try{await fetch(target,{cache:'reload'});}catch{}
     setTimeout(()=>location.replace(target),600);
